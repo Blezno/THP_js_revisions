@@ -6246,3 +6246,38 @@ const americanUsers = users.filter(user => user.country === "United States");
 const totalRevenueAmerican = americanUsers.reduce((acc, user) => acc + user.revenue, 0);
 console.log("Total revenue of the United States : ");
 console.log(totalRevenueAmerican);
+
+//Question 8 : Give us the list of all the countries with revenues superior to 0 :
+const countries = new Set();
+users.map((user) => {
+  if (user.revenue > 0){
+  countries.add(user.country);
+}
+});
+console.log("List of all the countris with a revenue superior to 0 :")
+console.log(countries);
+
+//Qestion 9 : Which are the top 5 users that have the biggest revenue? 
+const topFiveUsers = users
+  .sort((a, b) => b.revenue - a.revenue)
+  .slice(0, 5);
+
+console.log(topFiveUsers);
+
+//Question 10 : Gagnons-nous plus d'argent auprès des hommes, ou des femmes ?
+const revenueByGender = users.reduce((acc, user) => {
+  if (acc[user.sex]) {
+    acc[user.sex] += user.revenue;
+  } else {
+    acc[user.sex] = user.revenue;
+  }
+  return acc
+});
+console.log(revenueByGender);
+
+//Question 11: Sors-moi les utilisateurs ayant rapporté au moins 75€
+const revenueOverSeventy = users.filter(user => user.revenue > 7500);
+console.log("Users with a revenue over 75 :");
+console.log(revenueOverSeventy);
+
+//Question 12 : Parmi nos 100 premiers utilisateurs, quel est le pourcentage qui sont des clients payants ?
