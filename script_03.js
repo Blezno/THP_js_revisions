@@ -6201,3 +6201,48 @@ const users = [
   ];
 
 //Question 1 : What is the average revenue by user ?
+const sum = users.reduce((acc, user) => acc + user.revenue, 0);
+const average = sum / users.length;
+console.log(average);
+
+//Question 2 : Which is the percentage of users having a revenue higher than O ? 
+const usersWithRevenue = users.filter(user => user.revenue > 0);
+const percentage = (usersWithRevenue.length / users.length) * 100;
+console.log(percentage);
+
+//Question 3 : Within the users with a revenue superior to 0, which is the average revenue ?
+const sumUsersWithRevenue = usersWithRevenue.reduce((acc, user) => acc + user.revenue, 0);
+const averageUsersWithRevenue = sumUsersWithRevenue / usersWithRevenue.length;
+console.log(averageUsersWithRevenue);
+
+//Question 4 : What is the total of all the revenue? 
+const sumTotalRevenue = users.reduce((acc, user) => acc + user.revenue, 0);
+console.log(sumTotalRevenue);
+
+//Question 5 : How many users we have in France ?
+const frenchUsers = users.filter(user => user.country === "France");
+console.log(frenchUsers.length);
+
+//Question 6 : Whithin our french users how many make money? 
+const frenchUsersWithRevenue = frenchUsers.filter(user => user.revenue > 0);
+console.log(frenchUsersWithRevenue);
+
+//Question 7 : Give us the revenue of our most 4 represented countries France, UK, USA, Germany :
+const germanUsers = users.filter(user => user.country === "Germany");
+const totalRevenueGermany = germanUsers.reduce((acc, user) => acc + user.revenue, 0);
+console.log("Total revenue of Germany : ")
+console.log(totalRevenueGermany);
+
+const greatbritainUsers = users.filter(user => user.country === "Great Britain");
+const totalRevenueGreatbritain = greatbritainUsers.reduce((acc, user) => acc + user.revenue, 0);
+console.log("Total revenue of Great Britain : ")
+console.log(totalRevenueGreatbritain);
+
+const totalRevenueFrance = frenchUsers.reduce((acc, user) => acc + user.revenue, 0);
+console.log("Total revenue of France : ");
+console.log(totalRevenueFrance);
+
+const americanUsers = users.filter(user => user.country === "United States");
+const totalRevenueAmerican = americanUsers.reduce((acc, user) => acc + user.revenue, 0);
+console.log("Total revenue of the United States : ");
+console.log(totalRevenueAmerican);
